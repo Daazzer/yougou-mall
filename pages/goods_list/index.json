@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "search-bar": "/components/search-bar/index",
+    "tab-bar": "/custom-tab-bar/index",
+    "goods-item": "/components/goods-item/index"
+  },
+  "navigationBarTitleText": "商品列表",
+  "enablePullDownRefresh": true
+}

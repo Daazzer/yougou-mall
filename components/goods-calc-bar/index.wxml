@@ -1,0 +1,36 @@
+<view
+  class="goods-calc-bar"
+  style="padding-bottom: {{ paddingBottom }}; padding-bottom: calc({{ paddingBottom }} + constant(safe-area-inset-bottom)); padding-bottom: calc({{ paddingBottom }} + env(safe-area-inset-bottom))"
+>
+  <view class="goods-calc-bar__opt-group">
+    <view
+      class="checked-all-btn"
+      wx:if="{{ checkedAllBtn }}"
+      bindtap="checkedAll"
+    >
+      <icon
+        type="{{ isCheckedAll ? 'success': 'circle' }}"
+        color="{{ isCheckedAll ? '#e03440' : '' }}"
+        size="40rpx"
+      />
+      <label class="checked-all-btn__label">全选</label>
+    </view>
+    <view class="total">
+      <text class="total__text">合计：</text>
+      <text class="total__price">¥{{ totalPrice }}</text>
+    </view>
+  </view>
+  <view class="goods-calc-bar__btn-group">
+    <button
+      class="del-btn"
+      wx:if="{{ showDeleteBtn }}"
+      bindtap="delete"
+    >删除({{ checkedNum }})</button>
+    <button
+      class="settle-btn {{ disabledSettleBtn ? 'disabled' : '' }}"
+      bindtap="handleSettle"
+    >
+      <slot></slot>({{ checkedNum }})
+    </button>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+<wxs module="getUserOptionItems">
+module.exports = function (token) {
+  var userOptionItems = [
+    { text: '联系客服', subText: '400-618-4000', icon: 'kefu' },
+    { text: '意见反馈', icon: 'fankuitianbao' },
+    { text: '当前版本', subText: 'v1.0.0', icon: 'icon-' },
+    { text: '注销', icon: 'zhuxiao' }
+  ]
+
+  if (!token) {
+    return userOptionItems.filter(function (v, i) {
+      return i < 3
+    })
+  }
+
+  return userOptionItems
+}
+</wxs>
+<view class="user">
+  <view class="user__info">
+    <view
+      class="user-bg"
+      wx:if="{{ user.token }}"
+      style="background-image: {{ user.token ? 'url('+ user.avatarUrl +')' : 'none' }}"
+    />
+    <view wx:if="{{ user.token }}" class="user-info">
+      <image src="{{ user.avatarUrl }}" />
+      <text>{{ user.nickName }}</text>
+    </view>
+    <navigator wx:else class="login-btn" url="/pages/login/index">去登陆</navigator>
+  </view>
+  <view class="user__main">
+    <view class="order-option">
+      <view
+        wx:for="{{ orderOptionItems }}"
+        wx:for-item="orderOptionItem"
+        wx:key="icon"
+        class="order-option__item {{ index === activeOrderOptionItem ? 'active' : '' }}"
+        bindtap="handleOption"
+        data-text="{{ orderOptionItem.text }}"
+      >
+        <text class="{{ 'iconfont icon-' + orderOptionItem.icon }}" />
+        <text class="order-option-text">{{ orderOptionItem.text }}</text>
+      </view>
+    </view>
+    <view class="user-option">
+      <button
+        class="user-option__item"
+        plain
+        wx:for="{{ getUserOptionItems(user.token) }}"
+        wx:for-item="userOptionItem"
+        wx:key="text"
+        open-type="{{ userOptionItem.openType }}"
+        bindtap="handleOption"
+        data-text="{{ userOptionItem.text }}"
+        data-subtext="{{ userOptionItem.subText }}"
+      >
+        <view class="user-option-content">
+          <text class="{{ 'iconfont icon-' + userOptionItem.icon }}" />
+          <text>{{ userOptionItem.text }}</text>
+        </view>
+        <view class="user-option-subtext" wx:if="{{ userOptionItem.subText }}">{{ userOptionItem.subText }}</view>
+      </button>
+    </view>
+  </view>
+</view>

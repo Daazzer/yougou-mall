@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "search-bar": "/components/search-bar/index"
+  },
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "商品分类"
+}

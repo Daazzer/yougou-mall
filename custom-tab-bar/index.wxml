@@ -1,0 +1,13 @@
+<view class="tab-bar">
+  <view
+    class="tab-bar-item {{ currentIndex === index ? 'selected' : '' }}"
+    wx:for="{{ list }}"
+    wx:key="index"
+    bindtap="switchTap"
+    data-index="{{ index }}"
+    data-path="{{ item.pagePath }}"
+  >
+    <image class="tab-bar-item__image" src="{{ currentIndex === index ? item.selectedIconPath : item.iconPath }}" />
+    <view class="tab-bar-item__name">{{ item.text }}</view>
+  </view>
+</view>

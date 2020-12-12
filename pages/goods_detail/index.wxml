@@ -1,0 +1,62 @@
+<view class="goods-detail">
+  <swiper
+    class="goods-pics" 
+    indicator-active-color="#ea4350"
+    indicator-dots="{{ goodsDetail.pics.length > 0 }}"
+  >
+    <block wx:if="{{ goodsDetail.pics.length > 0 }}">
+      <swiper-item
+        class="goods-pics__item"
+        wx:for="{{ goodsDetail.pics }}"
+        wx:for-item="goodsPic"
+        wx:key="pics_id"
+        bindtap="previewGoodsImages"
+        data-pics="{{ goodsDetail.pics }}"
+        data-index="{{ index }}"
+      >
+        <image src="{{ goodsPic.pics_mid }}" />
+      </swiper-item>
+    </block>
+    <block wx:else>
+      <swiper-item class="goods-pics__item">
+        <image src="/static/images/empty.png" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="goods-info">
+    <view class="goods-info__head">
+      <view class="goods-price">¥{{ goodsDetail.goods_price || 0 }}</view>
+      <view class="goods-opt">
+        <button
+          class="iconfont icon-iconfontfenxiang"
+          plain
+          size="mini"
+          open-type="share"
+        />
+        <button
+          class="iconfont icon-{{ isFavoriteGoods ? 'shoucang1' : 'shoucang' }}"
+          plain
+          size="mini"
+          bindtap="favoriteGoods"
+        />
+      </view>
+    </view>
+    <view class="goods-info__content">{{ goodsDetail.goods_name }}</view>
+  </view>
+  <view class="goods-intro" wx:if="{{ goodsDetail.goods_introduce && goodsDetail.goods_introduce !== '' }}">
+    <view class="goods-intro__title">图文详情</view>
+    <rich-text 
+      class="goods-intro__content" 
+      nodes="{{ goodsDetail.goods_introduce }}"
+    />
+  </view>
+  <view class="goods-intro--none" wx:else>暂无图文详情</view>
+  <goods-options-bar
+    iconfont="iconfont"
+    icon-gouwuche="icon-gouwuche"
+    icon-kefu="icon-kefu"
+    goods_number="{{ goods_number }}"
+    goods_id="{{ goods_id }}"
+    bind:add-to-cart="addToCart"
+  />
+</view>

@@ -1,0 +1,29 @@
+<view class="goods-options-bar">
+  <view class="goods-options-bar__opt">
+    <button
+      class="goods-options-opt-item"
+      open-type="contact"
+      plain
+    >
+      <text class="iconfont icon-kefu icon text" />
+      <text class="goods-options-opt-item__text text">联系客服</text>
+    </button>
+    <navigator
+      class="goods-options-opt-item"
+      open-type="switchTab"
+      url="/pages/cart/index"
+    >
+      <text class="iconfont icon-gouwuche icon" />
+      <text class="goods-options-opt-item__text">购物车</text>
+      <text class="badge" wx:if="{{ goods_number > 0 }}">{{ goods_number > 99 ? '99+' : goods_number }}</text>
+    </navigator>
+  </view>
+  <view class="goods-options-bar__btn">
+    <view class="btn btn--warning" bindtap="addToCart">
+      加入购物车
+    </view>
+    <view class="btn btn--danger" bindtap="addToCart">
+      <navigator open-type="switchTab" url="/pages/cart/index">立即购买</navigator>
+    </view>
+  </view>
+</view>

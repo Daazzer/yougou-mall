@@ -1,0 +1,41 @@
+<view class="feedback">
+  <view class="feedback__quest-type">
+    <view class="quest-type-title">请选择问题类型</view>
+    <view class="quest-type-list">
+      <view
+        class="quest-type-list__item {{ questTypeItem.checked ? 'active' : '' }}"
+        wx:for="{{ questTypeItems }}"
+        wx:for-item="questTypeItem"
+        wx:key="content"
+        bindtap="checkQuest"
+        data-index="{{ index }}"
+        data-checked="{{ questTypeItem.checked }}"
+      >{{ questTypeItem.content }}</view>
+    </view>
+  </view>
+  <textarea class="feedback__quest-content" placeholder="请描述一下您的问题" />
+  <view class="feedback__upload">
+    <view class="upload-title">上传图片 ({{ imageItems.length }}/4)</view>
+    <view class="upload-images">
+      <view class="upload-images-list">
+        <view class="upload-images-list__btn iconfont icon-jiahao1" bindtap="uploadImg" />
+        <block wx:if="{{ imageItems.length > 0 }}">
+          <view
+            class="upload-images-list__item"
+            wx:for="{{ imageItems }}"
+            wx:for-item="imageItem"
+            wx:key="imageItem"
+          >
+            <image src="{{ imageItem }}" />
+            <view
+              class="clear-image-btn iconfont icon-guanbi" 
+              bindtap="clearImage"
+              data-index="{{ index }}"
+            />
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <button class="feedback__submit" type="warn">提交</button>
+</view>

@@ -1,0 +1,62 @@
+page {
+  background-color: #f9f9f9;
+}
+.pay {
+  padding: 20rpx 20rpx 140rpx;
+  padding: 20rpx 20rpx calc(140rpx + constant(safe-area-inset-bottom));
+  padding: 20rpx 20rpx calc(140rpx + env(safe-area-inset-bottom));
+}
+.delivery-address, .checked-goods-list {
+  background-color: #fff;
+}
+.delivery-address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 187rpx;
+  margin-bottom: 35rpx;
+}
+.delivery-address__btn {
+  padding: 23rpx 88rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  border: 2rpx solid #ea4350;
+  border-radius: 45rpx;
+  color: #ea4350;
+}
+.delivery-address__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 16rpx 17rpx 34rpx 30rpx;
+  flex: 1;
+  color: #434343;
+}
+.delivery-address__content .delivery-receiver-address {
+  display: -webkit-box;
+  margin-bottom: 18rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.delivery-address__content .delivery-receiver-info {
+  display: flex;
+  font-size: 26rpx;
+}
+.delivery-address__content .delivery-receiver-info__receiver-name {
+  margin-right: 40rpx;
+}
+.checked-goods-list {
+  padding-right: 13rpx;
+}
+.checked-goods-list__title {
+  padding: 17rpx 0 17rpx 26rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #434343;
+}

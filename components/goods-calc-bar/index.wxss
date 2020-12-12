@@ -1,0 +1,71 @@
+.goods-calc-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 22rpx 0;
+  border-top: 1px solid #fafafa;
+  background-color: #fff;
+  z-index: 100;
+}
+.goods-calc-bar__opt-group {
+  display: flex;
+  align-items: center;
+}
+.goods-calc-bar__opt-group .checked-all-btn {
+  display: flex;
+  margin-right: 36rpx;
+}
+.goods-calc-bar__opt-group .checked-all-btn__label {
+  margin-left: 24rpx;
+  margin-bottom: 3rpx;
+  font-size: 28rpx;
+  color: #8a8a8a;
+}
+.goods-calc-bar__opt-group .total {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.goods-calc-bar__opt-group .total__text {
+  margin-right: 10rpx;
+  color: #292929;
+}
+.goods-calc-bar__opt-group .total__price {
+  color: #ea4350;
+  font-size: 32rpx;
+}
+.goods-calc-bar__btn-group {
+  display: flex;
+  align-items: center;
+}
+.goods-calc-bar__btn-group .del-btn,
+.goods-calc-bar__btn-group .settle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65rpx;
+  padding: 0;
+  margin: 0;
+  border-radius: 32.5rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+.goods-calc-bar__btn-group .del-btn::after,
+.goods-calc-bar__btn-group .settle-btn::after {
+  content: none;
+}
+.goods-calc-bar__btn-group .del-btn {
+  width: 130rpx;
+  background-color: #fcaa23;
+}
+.goods-calc-bar__btn-group .settle-btn {
+  margin-left: 30rpx;
+  width: 165rpx;
+  background-color: #ea4350;
+}
+.goods-calc-bar__btn-group .settle-btn.disabled {
+  background-color: #b6b6b6;
+}

@@ -1,0 +1,80 @@
+<wxs module="goodsListUrl">
+  module.exports = function (url) {
+    var query = url.split('=')[1]
+    return '/pages/goods_list/index?query=' + query
+  }
+</wxs>
+<view class="index {{ isSearchBarFixed ? 'pt-100' : '' }}">
+  <search-bar id="searchBar" fixed="{{ isSearchBarFixed }}" />
+  <swiper
+    class="carousel"
+    circular
+    indicator-dots
+    autoplay
+    indicator-active-color="#ea4350"
+  >
+    <block wx:if="{{ carouselItems }}">
+      <swiper-item 
+        class="carousel__item"
+        wx:for="{{ carouselItems }}"
+        wx:for-item="carouselItem"
+        wx:key="goods_id"
+      >
+        <navigator url="{{ '/pages/goods_detail/index?goods_id=' + carouselItem.goods_id }}">
+          <image class="swiper-image" src="{{ carouselItem.image_src || '/static/images/empty.png' }}" />
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="cate-nav-list">
+    <block wx:if="{{ cateItems }}">
+      <view 
+        class="cate-nav-list__item" 
+        wx:for="{{ cateItems }}"
+        wx:for-item="cateItem"
+        wx:key="cateItem"
+      >
+        <navigator
+          url="{{ cateItem.navigatorUrl }}"
+          open-type="{{ cateItem.name === '分类' ? 'switchTab' : 'navigate' }}"
+        >
+          <image src="{{ cateItem.image_src || '/static/images/empty.png' }}" />
+        </navigator>
+      </view>
+    </block>
+  </view>
+  <view class="recommend-list">
+    <block wx:if="{{ recommendItems && recommendItems.length > 0 }}">
+      <view
+        class="recommend-list__item"
+        wx:for="{{ recommendItems }}"
+        wx:for-item="recommendItem"
+        wx:key="recommendItem"
+      >
+        <view class="recommend-title">
+          <image src="{{ recommendItem.floor_title.image_src }}" />
+        </view>
+        <view class="recommend-pics">
+          <view class="recommend-pics__main">
+            <navigator url="{{ goodsListUrl(recommendItem.product_list[0].navigator_url) }}">
+              <image src="{{ recommendItem.product_list[0].image_src || '/static/images/empty.png' }}" lazy-load />
+            </navigator>
+          </view>
+          <view class="recommend-pics-list">
+            <block   
+              wx:for="{{ recommendItem.product_list }}"
+              wx:for-item="recommendProduct"
+              wx:key="image_src"
+            >
+              <view class="recommend-pics-list__item" wx:if="{{ index > 0 }}">
+                <navigator url="{{ goodsListUrl(recommendProduct.navigator_url) }}">
+                  <image src="{{ recommendProduct.image_src || '/static/images/empty.png' }}" lazy-load />
+                </navigator>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

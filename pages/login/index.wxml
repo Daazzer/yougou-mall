@@ -1,0 +1,17 @@
+<view class="login">
+  <view class="login__welcome" wx:if="{{ user.token }}">
+    <text class="user-greeting">你好</text>
+    <image class="user-avatar" src="{{ user.avatarUrl }}" />
+    <text class="user-name">{{ user.nickName }}</text>
+    <text class="user-login-success-msg" wx:if="{{ firstLogin }}">登录成功，页面自动跳转...</text>
+  </view>
+  <button
+    wx:else
+    class="login__btn"
+    type="primary"
+    open-type="getUserInfo"
+    loading="{{ logging }}"
+    disabled="{{ logging }}"
+    bindgetuserinfo="login"
+  >授权微信登录</button>
+</view>

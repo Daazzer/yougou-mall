@@ -1,0 +1,30 @@
+<view class="goods-list-container {{ isSearchBarFixed ? 'pt-100_88' : '' }}">
+  <search-bar fixed="{{ isSearchBarFixed }}" />
+  <view class="sort {{ isSearchBarFixed ? 'fixed' : '' }}">
+    <view
+      class="sort__item {{ sortSelected === index ? 'active' : '' }}"
+      wx:for="{{ sortItems }}"
+      wx:for-item="sortItem"
+      wx:key="title"
+      bindtap="handleSort"
+      data-index="{{ index }}"
+    >{{ sortItem.title }}</view>
+  </view>
+  <view class="goods-list" wx:if="{{ goodsItems.length > 0 }}">
+    <goods-item
+      wx:for="{{ goodsItems }}"
+      wx:for-item="goodsItem"
+      wx:key="goods_id"
+      url="{{ '/pages/goods_detail/index?goods_id=' + goodsItem.goods_id }}"
+      goodsImage="{{ goodsItem.goods_small_logo }}"
+      goodsName="{{ goodsItem.goods_name }}"
+      goodsPrice="{{ goodsItem.goods_price }}"
+    />
+  </view>
+  <view class="goods-list--none" wx:else>暂无商品</view>
+  <view
+    class="goods-list--last-page"
+    wx:if="{{ goodsItems.length > 0 && isLastPage }}"
+  >到底啦...</view>
+  <tab-bar id="tabBar" />
+</view>

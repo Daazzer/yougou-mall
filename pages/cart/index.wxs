@@ -1,0 +1,39 @@
+module.exports = {
+  isCheckedAll: function (goodsItems) {
+    var checkAll = true
+    for (var i = 0; i < goodsItems.length; i++) {
+      if (goodsItems[i].checked === false) {
+        checkAll = false
+        break
+      }
+    }
+    return checkAll && goodsItems.length > 0
+  },
+  totalPrice: function (goodsItems) {
+    return goodsItems.reduce(function (totalPrice, goodsItem) {
+      if (goodsItem.checked) {
+        totalPrice += goodsItem.goods_price * goodsItem.goods_number
+      }
+      return totalPrice
+    }, 0)
+  },
+  goodsTotalNum: function (goodsItems) {
+    return goodsItems.reduce(function (totalNum, goodsItem) {
+      if (goodsItem.checked) {
+        totalNum += goodsItem.goods_number
+      }
+      return totalNum
+    }, 0)
+  },
+  checkedGoodsNum: function (goodsItems) {
+    return goodsItems.reduce(function (checkedNum, goodsItem) {
+      if (goodsItem.checked) {
+        checkedNum++
+      }
+      return checkedNum
+    }, 0)
+  },
+  showDeleteBtn: function (goodsItems) {
+    return goodsItems.length > 0
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "goods-item": "/components/goods-item/index",
+    "goods-calc-bar": "/components/goods-calc-bar/index"
+  }
+}

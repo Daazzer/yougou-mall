@@ -1,0 +1,3 @@
+<view class="search-bar {{ fixed ? 'fixed' : '' }}">
+  <navigator class="search-bar__btn" url="/pages/search/index">搜索</navigator>
+</view>

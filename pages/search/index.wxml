@@ -1,0 +1,24 @@
+<view class="search">
+  <view class="search-bar">
+    <view class="search-bar__input-group">
+      <text class="iconfont icon-sousuo" />
+      <input type="text" bindinput="handleInput" placeholder="输入商品名" focus bindconfirm="searchGoods" />
+    </view>
+    <button
+      class="search-bar__btn"
+      loading="{{ isSearching }}"
+      bindtap="searchGoods"
+    >{{ isSearching ? '' : '搜索' }}</button>
+  </view>
+  <view class="search-result-list" wx:if="{{ searchResultItems.length > 0 }}">
+    <goods-item
+      wx:for="{{ searchResultItems }}"
+      wx:for-item="searchResultItem"
+      wx:key="goods_id"
+      url="{{ '/pages/goods_detail/index?goods_id=' + searchResultItem.goods_id }}"
+      goodsImage="{{ searchResultItem.goods_image }}"
+      goodsName="{{ searchResultItem.goods_name }}"
+    />
+  </view>
+  <view class="search-result-list--none" wx:else>{{ isSearched && searchResultItems.length === 0 ? '暂无搜索结果' : '搜索你想买的商品' }}</view>
+</view>

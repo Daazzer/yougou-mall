@@ -1,0 +1,57 @@
+<wxs module="dateFormat">
+  module.exports = function (timeStamp) {
+    var date = getDate(timeStamp)
+    var YYYY = date.getFullYear()
+    var MM = date.getMonth() + 1
+    var DD = date.getDate()
+    var hh = date.getHours()
+    var mm = date.getMinutes()
+    var ss = date.getSeconds()
+
+    function timeFormat (time) {
+      return time >= 10 ? time : '0' + time
+    }
+
+    return [YYYY, MM, DD].join('/') + ' ' + [hh, mm, ss].map(timeFormat).join(':')
+  }
+</wxs>
+<view class="order">
+  <view class="order-nav-bar">
+    <view
+      wx:for="{{ orderNavItems }}"
+      wx:for-item="orderNavItem"
+      wx:key="type"
+      class="order-nav-bar__item {{ type === orderNavItem.type ? 'active' : '' }}"
+      bindtap="switchNav"
+      data-type="{{ orderNavItem.type }}"
+    >{{ orderNavItem.title }}</view>
+  </view>
+  <view class="order-list" wx:if="{{ orderItems.length > 0 }}">
+    <view
+      class="order-list__item"
+      wx:for="{{ orderItems }}"
+      wx:for-item="orderItem"
+      wx:key="order_number"
+    >
+      <view class="order-item-field order-num">
+        <view class="order-label">订单编号</view>
+        <view class="order-content">{{ orderItem.order_number }}</view>
+      </view>
+      <view class="order-item-field order-price">
+        <view class="order-label">订单金额</view>
+        <view class="order-content">¥{{ orderItem.order_price }}</view>
+      </view>
+      <view class="order-item-field order-date">
+        <view class="order-label">订单日期</view>
+        <view class="order-content">{{ dateFormat(orderItem.create_time * 1000) }}</view>
+      </view>
+    </view>
+  </view>
+  <view class="order-list--none" wx:else>
+    暂无数据
+  </view>
+  <view
+    class="order-list--last-page"
+    wx:if="{{ orderItems.length > 0 && isLastPage }}"
+  >到底啦...</view>
+</view>

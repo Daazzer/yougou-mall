@@ -1,0 +1,14 @@
+.cart {
+  padding: 20rpx 0 250rpx;
+  padding: 20rpx 0 calc(250rpx + constant(safe-area-inset-bottom));
+  padding: 20rpx 0 calc(250rpx + env(safe-area-inset-bottom));
+}
+.cart-list {
+  padding: 0 26rpx;
+}
+.cart-list--none {
+  text-align: center;
+  padding-top: 300rpx;
+  font-size: 38rpx;
+  color: #8a8a8a;
+}

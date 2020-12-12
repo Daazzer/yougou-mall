@@ -1,0 +1,12 @@
+.collect {
+  padding-bottom: 30rpx;
+}
+.collect-list {
+  padding: 20rpx 20rpx 0 0;
+}
+.collect-list--none {
+  margin-top: 300rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #676767;
+}

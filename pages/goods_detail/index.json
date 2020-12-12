@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "usingComponents": {
+    "goods-options-bar": "/components/goods_detail/goods-options-bar/index"
+  },
+  "enablePullDownRefresh": true
+}

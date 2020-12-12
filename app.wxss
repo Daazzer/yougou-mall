@@ -1,0 +1,19 @@
+@import "/static/fonts/iconfont.wxss";
+.pt-100 {
+  padding-top: 100rpx;
+}
+view,
+button,
+scroll-view,
+navigator,
+input,
+swiper,
+image {
+  box-sizing: border-box;
+}
+button,
+button[size="mini"],
+button:not([size="mini"]) {
+  font-weight: 400;
+  line-height: normal;
+}

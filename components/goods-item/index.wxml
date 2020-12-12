@@ -1,0 +1,33 @@
+<wxs module="isShowSelectBtn">
+  module.exports = function (goodsChecked) {
+    return typeof goodsChecked === 'boolean'
+  }
+</wxs>
+<view class="goods-item">
+  <view class="goods-item__check-bar" wx:if="{{ isShowSelectBtn(goodsChecked) }}" bindtap="checkGoods">
+    <icon
+      size="40rpx"
+      type="{{ goodsChecked ? 'success' : 'circle' }}"
+      color="{{ goodsChecked ? '#e03440': '#8a8a8a' }}"
+    />
+  </view>
+  <view class="goods-item-link">
+    <navigator url="{{ url }}">
+      <image class="goods-item__image" src="{{ goodsImage || '/static/images/empty.png' }}" lazy-load />
+    </navigator>
+    <view class="goods-item__info" bindtap="linkToUrl">
+      <view class="goods-name">{{ goodsName }}</view>
+      <view class="goods-body">
+        <view class="goods-price" wx:if="{{ goodsPrice || goodsPrice === 0 }}">¥ {{ goodsPrice || 0 }}</view>
+        <view class="goods-count" wx:if="{{ goodsCount || goodsCount === 0 }}">
+          ×{{ goodsCount }}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="goods-item__option" wx:if="{{ goodsNum !== '' && goodsNum }}">
+    <text class="goods-btn iconfont icon-jianhao" bindtap="reduceGoodsNum" />
+    <view class="goods-num">{{ goodsNum }}</view>
+    <text class="goods-btn iconfont icon-jiahao" bindtap="addGoodsNum" />
+  </view>
+</view>

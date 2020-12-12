@@ -1,0 +1,16 @@
+<view class="collect">
+  <view class="collect-list" wx:if="{{ collectItems.length > 0 }}">
+    <goods-item
+      wx:for="{{ collectItems }}"
+      wx:for-item="collectItem"
+      wx:key="goods_id"
+      url="{{ '/pages/goods_detail/index?goods_id=' + collectItem.goods_id }}"
+      goodsImage="{{ collectItem.goods_small_logo }}"
+      goodsName="{{ collectItem.goods_name }}"
+      goodsPrice="{{ collectItem.goods_price }}"
+    />
+  </view>
+  <view class="collect-list--none" wx:else>
+    暂无收藏商品...
+  </view>
+</view>

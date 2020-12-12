@@ -1,0 +1,38 @@
+<wxs src="./index.wxs" module="computed"></wxs>
+<view class="pay">
+  <view class="delivery-address" bindtap="chooseAddress">
+    <view class="delivery-address__content" wx:if="{{ computed.hasConsignee(consignee) }}">
+      <view class="delivery-receiver-address">{{ consignee.address }}</view>
+      <view class="delivery-receiver-info">
+        <view class="delivery-receiver-info__receiver-name">{{ consignee.name }}</view>
+        <view class="delivery-receiver-info__receiver-phone">{{ computed.maskPhoneNum(consignee.phone) }}</view>
+      </view>
+    </view>
+    <view
+      class="delivery-address__btn"
+      wx:else
+    >选择地址</view>
+  </view>
+  <view class="checked-goods-list">
+    <view class="checked-goods-list__title">已选商品</view>
+    <goods-item
+      wx:for="{{ checkedGoodsItems }}"
+      wx:for-item="checkedGoodsItem"
+      wx:key="goods_id"
+      url="{{ '/pages/goods_detail/index?goods_id=' + checkedGoodsItem.goods_id }}"
+      goodsImage="{{ checkedGoodsItem.goodsImage }}"
+      goodsName="{{ checkedGoodsItem.goods_name }}"
+      goodsPrice="{{ checkedGoodsItem.goods_price }}"
+      goodsCount="{{ checkedGoodsItem.goods_number }}"
+    />
+  </view>
+  <goods-calc-bar
+    paddingBottom="15rpx"
+    totalPrice="{{ computed.totalPrice(checkedGoodsItems) }}"
+    checkedNum="{{ computed.checkedGoodsNum(checkedGoodsItems) }}"
+    disabledSettleBtn="{{ !(computed.hasConsignee(consignee) && computed.checkedGoodsNum(checkedGoodsItems) > 0) || isPaying }}"
+    bind:settle="pay"
+  >
+    去支付
+  </goods-calc-bar>
+</view>

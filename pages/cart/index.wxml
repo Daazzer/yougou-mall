@@ -1,0 +1,38 @@
+<wxs src="./index.wxs" module="computed" />
+<view class="cart">
+  <view class="cart-list" wx:if="{{ goodsItems.length > 0 }}">
+    <goods-item
+      wx:for="{{ goodsItems }}"
+      wx:for-item="goodsItem"
+      wx:key="goods_id"
+      iconfont="iconfont"
+      icon-jianhao="icon-jianhao"
+      icon-jiahao="icon-jiahao"
+      url="{{ '/pages/goods_detail/index?goods_id=' + goodsItem.goods_id }}"
+      goodsChecked="{{ goodsItem.checked }}"
+      goodsImage="{{ goodsItem.goodsImage }}"
+      goodsName="{{ goodsItem.goods_name }}"
+      goodsPrice="{{ goodsItem.goods_price }}"
+      goodsNum="{{ goodsItem.goods_number }}"
+      bind:checked-goods="handleCheckedGoods"
+      bind:add-goods-num="handleAddGoodsNum"
+      bind:reduce-goods-num="handleReduceGoodsNum"
+      data-index="{{ index }}"
+    />
+  </view>
+  <view class="cart-list--none" wx:else>购物车空空如也...</view>
+  <goods-calc-bar
+    checkedAllBtn
+    paddingBottom="140rpx"
+    showDeleteBtn="{{ computed.showDeleteBtn(goodsItems) }}"
+    isCheckedAll="{{ computed.isCheckedAll(goodsItems) }}"
+    totalPrice="{{ computed.totalPrice(goodsItems) }}"
+    checkedNum="{{ computed.checkedGoodsNum(goodsItems) }}"
+    disabledSettleBtn="{{ computed.checkedGoodsNum(goodsItems) <= 0 }}"
+    bind:checked-all="checkedAll"
+    bind:delete="deleteGoodsItems"
+    bind:settle="goToPay"
+  >
+    去结算
+  </goods-calc-bar>
+</view>

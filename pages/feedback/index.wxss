@@ -1,0 +1,111 @@
+page {
+  background-color: #f9f9f9;
+}
+.feedback {
+  padding: 20rpx;
+  padding: 20rpx 20rpx calc(40rpx + constant(safe-area-inset-bottom));
+  padding: 20rpx 20rpx calc(40rpx + env(safe-area-inset-bottom));
+}
+.feedback__quest-type,
+.feedback__quest-content,
+.feedback__upload {
+  background-color: #fff;
+}
+.feedback__quest-type {
+  padding: 25rpx 35rpx;
+  margin-bottom: 20rpx;
+}
+.feedback__quest-type .quest-type-title {
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+  color: #434343;
+}
+.feedback__quest-type .quest-type-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.feedback__quest-type .quest-type-list__item {
+  width: 180rpx;
+  height: 70rpx;
+  margin-right: 45rpx;
+  margin-bottom: 25rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  border: 1rpx solid transparent;
+  border-radius: 35rpx;
+  color: #545353;
+  background-color: #ededed;
+}
+.feedback__quest-type .quest-type-list__item.active {
+  border: 1rpx solid #ea4350;
+  color: #ea4350;
+  background-color: #ffe6e6;
+}
+.feedback__quest-type .quest-type-list__item:nth-child(3n) {
+  margin-right: 0;
+}
+.feedback__quest-content {
+  height: 391rpx;
+  width: 645rpx;
+  padding: 30rpx 35rpx;
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+}
+.feedback__upload {
+  padding: 30rpx 18rpx;
+  margin-bottom: 35rpx;
+  font-size: 26rpx;
+  color: #434343;
+}
+.feedback__upload .upload-title {
+  margin-bottom: 30rpx;
+}
+.feedback__upload .upload-images-list {
+  display: flex;
+}
+.feedback__upload .upload-images-list__btn, 
+.feedback__upload .upload-images-list__item {
+  width: 130rpx;
+  height: 130rpx;
+  margin-right: 8rpx;
+}
+.feedback__upload .upload-images-list__btn {
+  font-size: 75rpx;
+  line-height: 130rpx;
+  text-align: center;
+  color: #a6a6a6;
+  background-color: #d8d8d8;
+}
+.feedback__upload .upload-images-list__item {
+  position: relative;
+}
+.feedback__upload .upload-images-list__item image {
+  width: 100%;
+  height: 100%;
+}
+.feedback__upload .upload-images-list__item .clear-image-btn {
+  position: absolute;
+  right: -16rpx;
+  top: -16rpx;
+  width: 45rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  border-radius: 50%;
+  font-size: 26rpx;
+  font-weight: 600;
+  text-align: center;
+  color: #f9d247;
+  background-color: #e0343fe7;
+  z-index: 10;
+}
+.feedback__submit {
+  height: 100rpx;
+  line-height: 100rpx !important;
+  border-radius: 50rpx;
+  font-size: 35rpx;
+  background-color: #ea4350;
+}
+.feedback__submit::after {
+  content: none;
+}

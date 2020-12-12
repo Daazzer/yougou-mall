@@ -1,0 +1,42 @@
+<view class="category">
+  <search-bar fixed />
+  <scroll-view class="category-nav-list" scroll-y>
+    <block wx:if="{{ categoryNavItems }}">
+      <view
+        class="category-nav-list__item {{ categoryNavSelected === index ? 'active' : ''}}"
+        wx:for="{{ categoryNavItems }}"
+        wx:for-item="categoryNavItem"
+        wx:key="cat_id"
+        bindtap="handleTapCategoryNav"
+        data-index="{{ index }}"
+      >
+        {{ categoryNavItem.cat_name }}
+      </view>
+    </block>
+  </scroll-view>
+  <view class="category-list">
+    <block wx:if="{{ categoryNavItems }}">
+      <view
+        class="category-list__item"
+        wx:for="{{ categoryNavItems[categoryNavSelected].children }}"
+        wx:for-item="categoryItem"
+        wx:key="cat_id"
+      >
+        <view class="category-title">/<text class="category-title__text">{{ categoryItem.cat_name }}</text>/</view>
+        <view class="goods-list">
+          <view
+            class="goods-list__item"
+            wx:for="{{ categoryItem.children }}"
+            wx:for-item="goodsItem"
+            wx:key="cat_id"
+          >
+            <navigator url="{{ '/pages/goods_list/index?cid=' + goodsItem.cat_id }}">
+              <image src="{{ goodsItem.cat_icon || '/static/images/empty.png' }}" lazy-load />
+              <text>{{ goodsItem.cat_name }}</text>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

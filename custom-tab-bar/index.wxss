@@ -1,0 +1,31 @@
+.tab-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 0 15rpx;
+  padding: 20rpx 0 calc(15rpx + constant(safe-area-inset-bottom)); /* 兼容 iOS 11 */
+  padding: 20rpx 0 calc(15rpx + env(safe-area-inset-bottom)); /* 兼容 iOS 11.2beta+ */
+  background-color: #fafafa;
+  z-index: 9999;
+}
+.tab-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24rpx;
+  color: #8c8d8d;
+}
+.tab-bar-item.selected {
+  font-weight: 600;
+  color: #e03440;
+}
+.tab-bar-item__image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom: 10rpx;
+}
+

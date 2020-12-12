@@ -1,0 +1,39 @@
+page {
+  background-color: #f9f9f9;
+}
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login__btn[type="primary"] {
+  padding: 20rpx 122rpx;
+  border: 0;
+  border-radius: 8rpx;
+  font-size: 36rpx;
+  background-color: #07c160;
+}
+.login__btn::after {
+  content: none;
+}
+.login__welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  word-break: break-all;
+  font-size: 36rpx;
+}
+.login__welcome .user-greeting {
+  margin-bottom: 40rpx;
+}
+.login__welcome .user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 10rpx;
+  border-radius: 50%;
+}
+.login__welcome .user-name {
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+}
