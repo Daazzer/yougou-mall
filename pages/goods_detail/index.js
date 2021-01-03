@@ -9,12 +9,6 @@ Page({
     },
     isFavoriteGoods: false
   },
-  shareMsg () {
-    return {
-      title: this.data.goodsDetail.goods_name,
-      imageUrl: this.data.goodsDetail.goods_big_logo
-    }
-  },
   async renderGoodsDetail (goods_id) {
     const [err, res] = await app.api.getGoodsDetail({ goods_id })
 
@@ -117,7 +111,10 @@ Page({
       .then(() => wx.stopPullDownRefresh())
   },
   onShareAppMessage () {
-    return this.data.shareMsg
+    return {
+      title: this.data.goodsDetail.goods_name,
+      imageUrl: this.data.goodsDetail.goods_big_logo
+    }
   },
   onAddToFavorites () {
     return this.data.shareMsg
